@@ -10,7 +10,8 @@ angular.module('rocEventManagerApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'ui.tinymce'
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
