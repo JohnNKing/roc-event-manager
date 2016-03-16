@@ -3,9 +3,10 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var SessionSchema = new mongoose.Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  speaker: String,
+  title: String,
+  abstract: String,
+  bio: String
 });
 
-export default mongoose.model('Session', SessionSchema);
+export default mongoose.model('EventSession', SessionSchema);

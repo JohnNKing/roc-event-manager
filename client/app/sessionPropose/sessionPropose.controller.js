@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rocEventManagerApp')
-	.controller('SessionProposeCtrl', function ($scope) {
+	.controller('SessionProposeCtrl', function ($scope, $http) {
 		$scope.session = {};
 	
 		$scope.tinymceOptions = {
@@ -14,5 +14,12 @@ angular.module('rocEventManagerApp')
 				});
 			}
 		};
-
+		
+		$scope.save = () => {
+            $http.put('/api/sessions/' + $scope.session._id, $scope.session);
+		};
+		
+		return $http.get('/api/sessions').then(response => {
+			$scope.session = response.data[0];
+		});
 	});

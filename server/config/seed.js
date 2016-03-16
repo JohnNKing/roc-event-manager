@@ -6,6 +6,7 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import Session from '../api/session/session.model';
 
 Thing.find({}).removeAsync()
   .then(() => {
@@ -55,5 +56,18 @@ User.find({}).removeAsync()
     })
     .then(() => {
       console.log('finished populating users');
+    });
+  });
+
+Session.find({}).removeAsync()
+  .then(() => {
+	  Session.createAsync({
+      speaker: 'John N. King',
+      title: 'Understanding and Preventing Cross-Site Request Forgery Attacks',
+      abstract: "Ranked #8 on the OWASP Top 10, “Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.” (OWASP Wiki)<br><br>CSRF vulnerabilities are commonplace and easily missed by developers who are unfamiliar with this class of attack. Unlike injection vulnerabilities, they do not become apparent during testing unless you know exactly what to look for. This session will provide an introduction to CSRF vulnerabilities, and will include an attack demonstration and practical examples that prevent this type of vulnerability.",
+      bio: "John is a web application developer with 10+ years of experience, with a focus on product management, user-experience, and application security. He has recently joined RIT ITS as a Senior Web Programmer / Analyst. He also serves as an officer of the Rochester chapters of OWASP and ISSA, and helps plan the annual Rochester Security Summit."
+    })
+    .then(() => {
+      console.log('finished populating event sessions');
     });
   });
