@@ -15,8 +15,10 @@ angular.module('rocEventManagerApp')
 			}
 		};
 		
-		$scope.save = () => {
-            $http.put('/api/sessions/' + $scope.session._id, $scope.session);
+		$scope.save = (form) => {
+			if (form.$valid) {
+				$http.put('/api/sessions/' + $scope.session._id, $scope.session);
+			}
 		};
 		
 		return $http.get('/api/sessions').then(response => {
